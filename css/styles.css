@@ -178,22 +178,6 @@ h3 {
   transform-origin: left;
 }
 
-/* .menu-links a {
-  color: #323332;
-  text-decoration: none;
-  font-size: clamp(3rem, 10vw, 9rem);
-  font-weight: 900;
-  line-height: 0.85;
-  text-transform: uppercase;
-  letter-spacing: -0.05em;
-  transform: translateY(40px);
-  opacity: 0;
-} */
-
-/* .menu-links a:hover {
-  font-style: italic;
-} */
-
 /* ============================= */
 /* HERO SMUDGE REVEAL */
 /* ============================= */
@@ -224,8 +208,6 @@ h3 {
   align-items: center;
   background-color: white;
   color: #010101;
-  /* background-color: #323332;
-  color: #cbd4c2; */
 }
 
 .hero-content-background {
@@ -234,8 +216,6 @@ h3 {
   align-items: center;
   background-color: #010101;
   color: white;
-  /* background-color: #cbd4c2;
-  color: #323332; */
   mask: url(#smudge-mask);
   -webkit-mask: url(#smudge-mask);
 }
@@ -274,37 +254,11 @@ h3 {
 }
 
 /* ============================= */
-/* RESPONSIVE */
-/* ============================= */
-
-@media (max-width: 768px) {
-  .menu-toggle {
-    top: 1rem;
-    right: 1rem;
-  }
-
-  .hero-content-background,
-  .hero-content-foreground {
-    padding: 1rem;
-  }
-
-  h3 {
-    font-size: clamp(2.5rem, 12vw, 5rem);
-  }
-
-  .menu-links a {
-    font-size: clamp(3rem, 16vw, 7rem);
-  }
-}
-
-
-
-/* ============================= */
 /* HORIZONTAL PROJECTS PARALLAX */
 /* ============================= */
 
 .projects-horizontal {
-   position: relative;
+  position: relative;
   min-height: 100svh;
   background: #d8d3c3;
   color: #111;
@@ -313,20 +267,26 @@ h3 {
   isolation: isolate;
 }
 
+/*
+  IMPORTANTE:
+  No uses position: sticky aquí.
+  GSAP ScrollTrigger va a hacer el pin.
+*/
 .projects-sticky {
-  position: sticky;
-  top: 0;
+  position: relative;
   height: 100svh;
   overflow: hidden;
   display: flex;
   align-items: center;
+  isolation: isolate;
 }
 
+/* PROJECTS ATRÁS */
 .projects-title {
   position: absolute;
   left: 3vw;
   top: 12vh;
-  z-index: 2;
+  z-index: 1;
   max-width: 900px;
   pointer-events: none;
 }
@@ -346,9 +306,12 @@ h3 {
   color: rgba(17, 17, 17, 0.75);
 }
 
+/* TARJETAS ADELANTE */
 .projects-track {
   position: relative;
+  z-index: 5;
   display: flex;
+  flex-direction: row;
   align-items: center;
   gap: 4rem;
   width: max-content;
@@ -358,6 +321,8 @@ h3 {
 }
 
 .project-panel {
+  position: relative;
+  z-index: 10;
   width: clamp(260px, 28vw, 420px);
   min-height: 520px;
   background: #050505;
@@ -383,7 +348,7 @@ h3 {
   height: 210px;
   border-radius: 1.3rem;
   background:
-    linear-gradient(135deg, rgba(255,255,255,0.18), rgba(255,255,255,0.02)),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.02)),
     #cbd4c2;
   margin-bottom: 1.5rem;
 }
@@ -399,7 +364,7 @@ h3 {
 .project-panel p {
   font-size: 1rem;
   line-height: 1.4;
-  color: rgba(255,255,255,0.75);
+  color: rgba(255, 255, 255, 0.75);
   margin-bottom: 1.5rem;
 }
 
@@ -418,47 +383,9 @@ h3 {
   rotate: 6deg;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .projects-horizontal {
-    height: auto;
-    padding: 6rem 1rem;
-  }
-
-  .projects-sticky {
-    position: relative;
-    height: auto;
-    overflow: visible;
-    display: block;
-  }
-
-  .projects-title {
-    position: relative;
-    left: auto;
-    top: auto;
-    margin-bottom: 3rem;
-  }
-
-  .projects-title h2 {
-    font-size: clamp(4rem, 20vw, 7rem);
-  }
-
-  .projects-track {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    padding: 0;
-    width: 100%;
-  }
-
-  .project-panel {
-    width: 100%;
-    min-height: auto;
-    rotate: 0deg;
-    margin: 0 !important;
-  }
-}
-
+/* ============================= */
+/* CONTACT */
+/* ============================= */
 
 #contact {
   position: relative;
@@ -474,4 +401,114 @@ h3 {
 
 #contact p {
   color: #ddd;
+}
+
+/* ============================= */
+/* RESPONSIVE */
+/* ============================= */
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    top: 1rem;
+    right: 1rem;
+    z-index: 1001;
+  }
+
+  .hero-content-background,
+  .hero-content-foreground {
+    padding: 1rem;
+  }
+
+  h3 {
+    font-size: clamp(2.5rem, 12vw, 5rem);
+  }
+
+  .menu-links a {
+    font-size: clamp(3rem, 16vw, 7rem);
+  }
+
+  .projects-horizontal {
+    position: relative;
+    min-height: 100svh;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  /*
+    En móvil tampoco usamos sticky.
+    GSAP hace el pin.
+  */
+  .projects-sticky {
+    position: relative;
+    height: 100svh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+
+  .projects-title {
+    position: absolute;
+    left: 1.4rem;
+    top: 5.5rem;
+    z-index: 1;
+    max-width: 100%;
+    pointer-events: none;
+  }
+
+  .projects-title h2 {
+    font-size: clamp(4rem, 22vw, 7rem);
+    line-height: 0.85;
+    letter-spacing: -0.08em;
+  }
+
+  .projects-track {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    width: max-content;
+    padding-left: 8vw;
+    padding-right: 40vw;
+    will-change: transform;
+  }
+
+  .project-panel {
+    position: relative;
+    z-index: 10;
+    width: 84vw;
+    min-height: 470px;
+    flex-shrink: 0;
+    margin: 0 !important;
+    padding: 1rem;
+  }
+
+  .project-panel:nth-child(2n) {
+    margin-top: 12vh !important;
+  }
+
+  .project-panel:nth-child(3n) {
+    margin-bottom: 8vh !important;
+  }
+
+  .project-image {
+    height: 190px;
+    border-radius: 1.1rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .project-panel h3 {
+    font-size: clamp(2rem, 11vw, 3.4rem);
+    line-height: 0.9;
+  }
+
+  .project-panel p {
+    font-size: 0.95rem;
+    line-height: 1.35;
+  }
+
+  .project-panel span {
+    font-size: 0.8rem;
+  }
 }

@@ -13,7 +13,6 @@ let menuOpen = false;
 const closedPath = "M0 0 H100 V0 Q50 0 0 0 Z";
 const openPath = "M0 0 H100 V100 Q50 100 0 100 Z";
 
-
 function openMenu() {
   menuOpen = true;
 
@@ -92,79 +91,6 @@ function closeMenu() {
       "-=0.1"
     );
 }
-
-
-
-
-
-
-
-
-// function openMenu() {
-//   menuOpen = true;
-
-//   menuToggle.classList.add("is-open");
-//   fullscreenMenu.classList.add("is-open");
-
-//   gsap.set(menuLinks, {
-//     autoAlpha: 1,
-//   });
-
-//   gsap.timeline()
-//     .to(menuShape, {
-//       attr: { d: openPath },
-//       duration: 1,
-//       ease: "power4.inOut",
-//     })
-//     .to(
-//       menuLinkItems,
-//       {
-//         y: 0,
-//         opacity: 1,
-//         duration: 0.8,
-//         stagger: 0.08,
-//         ease: "power3.out",
-//       },
-//       "-=0.4"
-//     );
-// }
-
-// function closeMenu() {
-//   menuOpen = false;
-
-//   menuToggle.classList.remove("is-open");
-
-//   gsap.timeline({
-//     onComplete() {
-//       fullscreenMenu.classList.remove("is-open");
-
-//       gsap.set(menuLinks, {
-//         autoAlpha: 0,
-//       });
-
-//       gsap.set(menuLinkItems, {
-//         y: 40,
-//         opacity: 0,
-//       });
-//     },
-//   })
-//     .to(menuLinkItems, {
-//       y: -40,
-//       opacity: 0,
-//       duration: 0.45,
-//       stagger: 0.05,
-//       ease: "power2.in",
-//     })
-//     .to(
-//       menuShape,
-//       {
-//         attr: { d: closedPath },
-//         duration: 1,
-//         ease: "power4.inOut",
-//       },
-//       "-=0.2"
-//     );
-// }
 
 menuToggle.addEventListener("click", function () {
   if (menuOpen) {
@@ -245,7 +171,6 @@ function matchSVGToViewport() {
 }
 
 matchSVGToViewport();
-
 window.addEventListener("resize", matchSVGToViewport);
 
 function stampSmudgeAt(x, y, radius) {
@@ -314,12 +239,6 @@ function update() {
 
 requestAnimationFrame(update);
 
-
-
-/* ============================= */
-/* HORIZONTAL PROJECTS PARALLAX */
-/* ============================= */
-
 /* ============================= */
 /* HORIZONTAL PROJECTS PARALLAX */
 /* ============================= */
@@ -331,17 +250,31 @@ const projectsSticky = document.querySelector(".projects-sticky");
 const projectsTrack = document.querySelector(".projects-track");
 const projectPanels = gsap.utils.toArray(".project-panel");
 
-if (projectsSection && projectsSticky && projectsTrack && window.innerWidth > 768) {
+let projectsScrollCreated = false;
+
+function initProjectsParallax() {
+  if (!projectsSection || !projectsSticky || !projectsTrack) return;
+  if (projectsScrollCreated) return;
+
+  projectsScrollCreated = true;
+
+  const scrollFactor = window.innerWidth <= 768 ? 1.65 : 1.35;
+
   const getScrollDistance = () => {
-    return projectsTrack.scrollWidth - window.innerWidth;
+    const distance = projectsTrack.scrollWidth - window.innerWidth;
+    return Math.max(0, distance);
   };
 
   const setProjectsHeight = () => {
-    const scrollDistance = getScrollDistance();
-    projectsSection.style.height = `${scrollDistance + window.innerHeight}px`;
+    const distance = getScrollDistance();
+    projectsSection.style.height = `${distance * scrollFactor + window.innerHeight}px`;
   };
 
   setProjectsHeight();
+
+  gsap.set(projectsTrack, {
+    x: 0,
+  });
 
   gsap.to(projectsTrack, {
     x: () => -getScrollDistance(),
@@ -349,7 +282,7 @@ if (projectsSection && projectsSticky && projectsTrack && window.innerWidth > 76
     scrollTrigger: {
       trigger: projectsSection,
       start: "top top",
-      end: () => `+=${getScrollDistance()}`,
+      end: () => `+=${getScrollDistance() * scrollFactor}`,
       scrub: 1,
       pin: projectsSticky,
       anticipatePin: 1,
@@ -359,62 +292,30 @@ if (projectsSection && projectsSticky && projectsTrack && window.innerWidth > 76
 
   projectPanels.forEach((panel, index) => {
     gsap.to(panel, {
-      y: index % 2 === 0 ? -80 : 80,
-      rotate: index % 2 === 0 ? 4 : -4,
+      y: index % 2 === 0 ? -40 : 40,
+      rotate: index % 2 === 0 ? 3 : -3,
       ease: "none",
       scrollTrigger: {
         trigger: projectsSection,
         start: "top top",
-        end: () => `+=${getScrollDistance()}`,
+        end: () => `+=${getScrollDistance() * scrollFactor}`,
         scrub: 1,
       },
     });
   });
 
-  window.addEventListener("resize", () => {
+  window.addEventListener("resize", function () {
     setProjectsHeight();
     ScrollTrigger.refresh();
   });
 }
 
-
-
-
-// gsap.registerPlugin(ScrollTrigger);
-
-// const projectsSection = document.querySelector(".projects-horizontal");
-// const projectsTrack = document.querySelector(".projects-track");
-// const projectPanels = gsap.utils.toArray(".project-panel");
-
-// if (projectsSection && projectsTrack && window.innerWidth > 768) {
-//   const getScrollAmount = () => {
-//     return -(projectsTrack.scrollWidth - window.innerWidth);
-//   };
-
-//   gsap.to(projectsTrack, {
-//     x: getScrollAmount,
-//     ease: "none",
-//     scrollTrigger: {
-//       trigger: projectsSection,
-//       start: "top top",
-//       end: () => `+=${projectsTrack.scrollWidth}`,
-//       scrub: 1,
-//       pin: ".projects-sticky",
-//       invalidateOnRefresh: true,
-//     },
-//   });
-
-//   projectPanels.forEach((panel, index) => {
-//     gsap.to(panel, {
-//       y: index % 2 === 0 ? -80 : 80,
-//       rotate: index % 2 === 0 ? 4 : -4,
-//       ease: "none",
-//       scrollTrigger: {
-//         trigger: projectsSection,
-//         start: "top top",
-//         end: "bottom bottom",
-//         scrub: 1,
-//       },
-//     });
-//   });
-// }
+if (document.readyState === "complete") {
+  initProjectsParallax();
+  ScrollTrigger.refresh();
+} else {
+  window.addEventListener("load", function () {
+    initProjectsParallax();
+    ScrollTrigger.refresh();
+  });
+}
