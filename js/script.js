@@ -314,3 +314,107 @@ function update() {
 
 requestAnimationFrame(update);
 
+
+
+/* ============================= */
+/* HORIZONTAL PROJECTS PARALLAX */
+/* ============================= */
+
+/* ============================= */
+/* HORIZONTAL PROJECTS PARALLAX */
+/* ============================= */
+
+gsap.registerPlugin(ScrollTrigger);
+
+const projectsSection = document.querySelector(".projects-horizontal");
+const projectsSticky = document.querySelector(".projects-sticky");
+const projectsTrack = document.querySelector(".projects-track");
+const projectPanels = gsap.utils.toArray(".project-panel");
+
+if (projectsSection && projectsSticky && projectsTrack && window.innerWidth > 768) {
+  const getScrollDistance = () => {
+    return projectsTrack.scrollWidth - window.innerWidth;
+  };
+
+  const setProjectsHeight = () => {
+    const scrollDistance = getScrollDistance();
+    projectsSection.style.height = `${scrollDistance + window.innerHeight}px`;
+  };
+
+  setProjectsHeight();
+
+  gsap.to(projectsTrack, {
+    x: () => -getScrollDistance(),
+    ease: "none",
+    scrollTrigger: {
+      trigger: projectsSection,
+      start: "top top",
+      end: () => `+=${getScrollDistance()}`,
+      scrub: 1,
+      pin: projectsSticky,
+      anticipatePin: 1,
+      invalidateOnRefresh: true,
+    },
+  });
+
+  projectPanels.forEach((panel, index) => {
+    gsap.to(panel, {
+      y: index % 2 === 0 ? -80 : 80,
+      rotate: index % 2 === 0 ? 4 : -4,
+      ease: "none",
+      scrollTrigger: {
+        trigger: projectsSection,
+        start: "top top",
+        end: () => `+=${getScrollDistance()}`,
+        scrub: 1,
+      },
+    });
+  });
+
+  window.addEventListener("resize", () => {
+    setProjectsHeight();
+    ScrollTrigger.refresh();
+  });
+}
+
+
+
+
+// gsap.registerPlugin(ScrollTrigger);
+
+// const projectsSection = document.querySelector(".projects-horizontal");
+// const projectsTrack = document.querySelector(".projects-track");
+// const projectPanels = gsap.utils.toArray(".project-panel");
+
+// if (projectsSection && projectsTrack && window.innerWidth > 768) {
+//   const getScrollAmount = () => {
+//     return -(projectsTrack.scrollWidth - window.innerWidth);
+//   };
+
+//   gsap.to(projectsTrack, {
+//     x: getScrollAmount,
+//     ease: "none",
+//     scrollTrigger: {
+//       trigger: projectsSection,
+//       start: "top top",
+//       end: () => `+=${projectsTrack.scrollWidth}`,
+//       scrub: 1,
+//       pin: ".projects-sticky",
+//       invalidateOnRefresh: true,
+//     },
+//   });
+
+//   projectPanels.forEach((panel, index) => {
+//     gsap.to(panel, {
+//       y: index % 2 === 0 ? -80 : 80,
+//       rotate: index % 2 === 0 ? 4 : -4,
+//       ease: "none",
+//       scrollTrigger: {
+//         trigger: projectsSection,
+//         start: "top top",
+//         end: "bottom bottom",
+//         scrub: 1,
+//       },
+//     });
+//   });
+// }

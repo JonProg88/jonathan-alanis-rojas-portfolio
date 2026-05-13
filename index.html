@@ -85,10 +85,66 @@
     <p>Desarrollador web enfocado en interfaces modernas, animaciones y experiencias interactivas.</p>
   </section>
 
-  <section class="page-section" id="projects">
-    <h2>Projects</h2>
-    <p>Proyectos con .NET, SQL Server, JavaScript, Bootstrap, APIs y frontend creativo.</p>
-  </section>
+ <section class="projects-horizontal" id="projects">
+  <div class="projects-sticky">
+    <div class="projects-title">
+      <h2>Projects</h2>
+      <p>
+        Proyectos desarrollados con .NET, SQL Server, JavaScript, Bootstrap,
+        APIs REST y análisis de datos.
+      </p>
+    </div>
+
+    <div class="projects-track">
+
+      <article class="project-panel rotate-left">
+        <div class="project-image"></div>
+        <h3>API Descargas IMPI</h3>
+        <p>
+          API en .NET 8 para consultar PDFs, registrar descargas y manejar respuestas controladas.
+        </p>
+        <span>.NET 8 · SQL Server · API REST</span>
+      </article>
+
+      <article class="project-panel rotate-right">
+        <div class="project-image"></div>
+        <h3>CRUD Videojuegos</h3>
+        <p>
+          Sistema CRUD con procedimientos almacenados, Bootstrap, SweetAlert2 y JavaScript.
+        </p>
+        <span>C# · SQL Server · Bootstrap</span>
+      </article>
+
+      <article class="project-panel rotate-left">
+        <div class="project-image"></div>
+        <h3>Portfolio Web</h3>
+        <p>
+          Portafolio interactivo con animaciones SVG, GSAP, menú fullscreen y efectos creativos.
+        </p>
+        <span>HTML · CSS · JavaScript · GSAP</span>
+      </article>
+
+      <article class="project-panel rotate-right">
+        <div class="project-image"></div>
+        <h3>Data Analysis</h3>
+        <p>
+          Prácticas de análisis de datos usando Python, Pandas, Jupyter Notebook y visualización.
+        </p>
+        <span>Python · Pandas · Power BI</span>
+      </article>
+
+      <article class="project-panel rotate-left">
+        <div class="project-image"></div>
+        <h3>Oracle APEX Reports</h3>
+        <p>
+          Reportes y consultas SQL sobre Oracle RDS, validaciones y procesamiento de datos.
+        </p>
+        <span>Oracle · SQL · APEX</span>
+      </article>
+
+    </div>
+  </div>
+</section>
 
   <section class="page-section" id="contact">
     <h2>Contact</h2>
@@ -97,7 +153,7 @@
 
   <!-- GSAP por CDN -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <!-- Tu JS -->
   <script src="js/script.js"></script>
 </body>
