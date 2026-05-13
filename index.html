@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portafolio JAR</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+
+  <!-- Botón del menú -->
+  <button class="menu-toggle" aria-label="Abrir menú">
+    <span class="menu-text">MENU</span>
+    <span class="menu-icon">
+      <span></span>
+      <span></span>
+    </span>
+  </button>
+
+  <!-- Menú fullscreen con SVG -->
+  <nav class="fullscreen-menu">
+    <svg
+      class="menu-svg"
+      viewBox="0 0 100 100"
+      preserveAspectRatio="none"
+    >
+      <path
+        class="menu-shape"
+        d="M0 0 H100 V0 Q50 0 0 0 Z"
+      ></path>
+    </svg>
+
+    <div class="menu-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Hero principal -->
+  <section class="hero" id="home">
+    <div class="hero-content-foreground">
+      <h3>
+      My Portafolio JAR
+      </h3>
+    </div>
+
+    <div class="hero-content-background">
+      <h3>
+        C# .Net Core React js Css Html Azure Sql server As400 Oracle Apex 
+        Angular PHP Laravel Codignither Asp Net Bosstrap Material Python Power BI
+      </h3>
+    </div>
+
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="none"
+      class="smudge-revealer"
+    >
+      <defs>
+        <filter id="smudge-goo">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="25" />
+          <feColorMatrix
+            type="matrix"
+            values="1 0 0 0 0
+                    0 1 0 0 0
+                    0 0 1 0 0
+                    0 0 0 60 -14"
+          />
+        </filter>
+      </defs>
+
+      <mask id="smudge-mask">
+        <g class="smudge-blobs" filter="url(#smudge-goo)"></g>
+      </mask>
+    </svg>
+  </section>
+
+  <!-- Secciones dummy para que los links tengan destino -->
+  <section class="page-section" id="about">
+    <h2>About</h2>
+    <p>Desarrollador web enfocado en interfaces modernas, animaciones y experiencias interactivas.</p>
+  </section>
+
+  <section class="page-section" id="projects">
+    <h2>Projects</h2>
+    <p>Proyectos con .NET, SQL Server, JavaScript, Bootstrap, APIs y frontend creativo.</p>
+  </section>
+
+  <section class="page-section" id="contact">
+    <h2>Contact</h2>
+    <p>Disponible para colaborar en proyectos web, APIs y desarrollo frontend/backend.</p>
+  </section>
+
+  <!-- GSAP por CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+
+  <!-- Tu JS -->
+  <script src="js/script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
