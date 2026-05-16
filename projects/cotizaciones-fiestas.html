@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Cotizaciones de Fiestas | Portafolio JAR</title>
+
+  <link rel="stylesheet" href="../css/project-detail.css" />
+</head>
+
+<body class="detail-body">
+
+  <div class="parallax-bg">
+    <div class="bg-word" data-speed="0.18">VENTAS</div>
+    <div class="bg-orb orb-one" data-speed="0.08"></div>
+    <div class="bg-orb orb-two" data-speed="-0.06"></div>
+    <div class="bg-grid" data-speed="0.04"></div>
+  </div>
+
+  <header class="detail-header">
+    <a href="../index.html#projects" class="back-link">← Volver a proyectos</a>
+
+    <a
+      href="https://github.com/JonProg88/analisis-cotizaciones-fiestas-pandas"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="header-github"
+    >
+      GitHub ↗
+    </a>
+  </header>
+
+  <main class="detail-main">
+
+    <section class="detail-hero">
+      <div class="detail-copy reveal">
+        <span class="detail-kicker">Python · Pandas · Matplotlib · CSV</span>
+
+        <h1>
+          Cotizaciones de <span>Fiestas</span>
+        </h1>
+
+        <p>
+          Proyecto de análisis comercial usando Python y Pandas para medir paquetes
+          más solicitados, ventas estimadas, tasa de conversión y comportamiento mensual
+          de cotizaciones.
+        </p>
+
+        <div class="detail-actions">
+          <a
+            href="https://github.com/JonProg88/analisis-cotizaciones-fiestas-pandas"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="detail-button"
+          >
+            <svg
+              class="github-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                fill="currentColor"
+                d="M12 .5C5.65.5.5 5.65.5 12A11.5 11.5 0 0 0 8.36 22.3c.58.1.79-.25.79-.56v-2.02c-3.18.69-3.85-1.35-3.85-1.35-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.74 2.68 1.24 3.33.95.1-.74.4-1.24.72-1.53-2.54-.29-5.21-1.27-5.21-5.64 0-1.25.45-2.27 1.18-3.08-.12-.29-.51-1.47.11-3.06 0 0 .96-.31 3.14 1.18a10.9 10.9 0 0 1 5.72 0c2.18-1.49 3.14-1.18 3.14-1.18.62 1.59.23 2.77.11 3.06.73.81 1.18 1.83 1.18 3.08 0 4.38-2.68 5.34-5.23 5.63.41.36.77 1.06.77 2.15v3.18c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"
+              />
+            </svg>
+
+            <span>Ver repositorio</span>
+          </a>
+
+          <a href="../index.html#projects" class="detail-button secondary">
+            Volver al portafolio
+          </a>
+        </div>
+      </div>
+
+      <div class="detail-card reveal" data-speed="-0.04">
+        <div class="card-grid"></div>
+
+        <div class="card-content">
+          <h2>Cotizaciones + Ventas</h2>
+
+          <p>
+            Análisis de paquetes, sucursales, medios de contacto, ventas estimadas
+            y tasa de conversión.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-section reveal">
+      <h2>Objetivo</h2>
+
+      <p>
+        Analizar cotizaciones comerciales para identificar paquetes más solicitados,
+        sucursales con mayor rendimiento, tasa de conversión y comportamiento mensual
+        de solicitudes.
+      </p>
+    </section>
+
+    <section class="detail-section reveal">
+      <h2>Proceso realizado</h2>
+
+      <ul>
+        <li>Carga del dataset desde archivo CSV.</li>
+        <li>Exploración inicial del dataset con Pandas.</li>
+        <li>Conversión de la columna fecha con <code>pd.to_datetime()</code>.</li>
+        <li>Creación de columna de mes para análisis temporal.</li>
+        <li>Identificación de paquetes más solicitados.</li>
+        <li>Filtrado de cotizaciones vendidas.</li>
+        <li>Cálculo de monto total vendido.</li>
+        <li>Cálculo de tasa de conversión.</li>
+        <li>Agrupación de ventas estimadas por sucursal.</li>
+        <li>Visualización básica con Matplotlib.</li>
+      </ul>
+    </section>
+
+    <section class="metrics-section reveal">
+      <article>
+        <strong>Ventas</strong>
+        <span>Análisis de cotizaciones vendidas y monto estimado.</span>
+      </article>
+
+      <article>
+        <strong>%</strong>
+        <span>Cálculo de tasa de conversión de cotización a venta.</span>
+      </article>
+
+      <article>
+        <strong>Mes</strong>
+        <span>Comportamiento mensual de cotizaciones y solicitudes.</span>
+      </article>
+    </section>
+
+    <section class="detail-section reveal">
+      <h2>Resultados</h2>
+
+      <p>
+        El análisis permite detectar paquetes con mayor demanda, medios de contacto
+        relevantes, comportamiento mensual de cotizaciones y oportunidades para mejorar
+        el seguimiento comercial.
+      </p>
+    </section>
+
+    <section class="detail-section reveal">
+      <h2>Tecnologías</h2>
+
+      <div class="tech-list">
+        <span>Python</span>
+        <span>Pandas</span>
+        <span>Jupyter Notebook</span>
+        <span>Matplotlib</span>
+        <span>CSV</span>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="../js/project-details.js"></script>
+</body>
+</html>
